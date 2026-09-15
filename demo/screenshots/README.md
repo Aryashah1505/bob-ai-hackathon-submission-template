@@ -1,26 +1,9 @@
-# Screenshots
+# PRAVAHA Application Screenshots
 
-Place your application screenshots in this folder.
+These screenshots demonstrate the operational features and user journey of **PRAVAHA — Power Grid Outage Prediction & Machine Health Advisory**:
 
-## Naming Convention
-
-Name your screenshots sequentially so they appear in logical order:
-
-  01-landing-page.png       ← First thing a user sees
-  02-main-feature.png       ← Your primary feature in action
-  03-output-or-results.png  ← The result / value delivered
-  04-additional-feature.png ← Any other notable screen
-
-## Requirements
-
-- Minimum: 3 screenshots
-- Format: PNG or JPG
-- Show the application running with real (or realistic mock) data
-- Avoid screenshots of empty states or placeholder data
-- Captions are not required but appreciated
-
-## Tips
-
-- Use a consistent browser window size across all screenshots
-- Highlight key UI elements with arrows/circles if helpful (use any image editor)
-- Include a screenshot showing IBM technology integration if applicable
+1. **`01-home-dashboard.png`** — **Grid Operations Overview**: Live telemetry status for Adani Power Ltd (Gujarat territory), active substations, monitored assets count, regional weather tracking, and failure incident summaries.
+2. **`02-substations-threat-intel.png`** — **Substations Network & Live Risk Alerts**: Real-time asset-level risk scoring (75% High, 40% Medium, 25% Low) with deterministic advisory actions and industry scoping.
+3. **`03-historical-incidents.png`** — **Historical Outage & Equipment Failure Records**: Dedicated outage intelligence table tracking equipment failures, severity levels, outage durations, and affected customers.
+4. **`04-maintenance-crew-positioning.png`** — **Maintenance Work-Orders & Severe Storm Crew Pre-Positioning**: Automated preventative maintenance work orders and standby crew staging across regional substations.
+5. **`05-dga-ml-prediction-engine.png`** — **Trained DGA ML Prediction Engine**: Live execution of trained Gradient Boosting & Random Forest models on equipment telemetry, estimating health scores, failure risk, and remaining useful life.
