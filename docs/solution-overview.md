@@ -1,35 +1,51 @@
 # Solution Overview
 
 ## What We Built
-**PRAVAHA** is an AI-powered intelligent power-grid monitoring and failure-prediction platform. It combines trained Machine Learning ensembles (Gradient Boosting & Random Forest) with IEEE/CIGRE physics-calibrated engineering rules to deliver real-time risk scores, remaining useful life predictions, weather-induced outage forecasting, and automated crew dispatch recommendations.
-
-## How It Works
-
-1. **Multi-Source Telemetry Ingestion:** Continuous ingestion of sensor readings (temperatures, load percentage, vibration, partial discharge, dielectric oil quality, voltage fluctuations) and regional meteorological data.
-2. **DGA Physicochemical ML Inference:** Trained Gradient Boosting & Random Forest models evaluate Dissolved Gas Analysis profiles ($H_2$, $CH_4$, $CO$, $CO_2$, $C_2H_4$, Dielectric Rigidity) to predict equipment health index and remaining useful life (years).
-3. **Regional Outage & Downtime Forecasting:** Multi-output classification models correlate wind gusts, storm intensity, grid load ratio, and upstream alert counts to predict specific fault types and expected repair downtime in hours.
-4. **Explainable Risk Attribution:** Every score provides granular contributing factor breakdowns (e.g. "+25% Critical Thermal Stress", "+15% High Partial Discharge").
-5. **Automated Advisory & Dispatch:** Instant generation of preventative maintenance directives and optimized field crew work-order planning.
+**PRAVAHA** combines machine data, weather data, and past failure data to detect risky transformers and substations early. It gives each asset its own risk score and then suggests alerts, maintenance, and crew planning before a failure becomes an outage.
 
 ## Architecture Flow
 
+```text
+Machine Data
+     +
+Weather Data
+     +
+Failure History
+     ↓
+  PRAVAHA
+     ↓
+Risk Analysis
+     ↓
+Asset-wise Risk Score
+     ↓
+┌────────┬──────────────┬─────────────┐
+↓        ↓              ↓
+Alert    Maintenance    Crew Planning
+└────────┴──────────────┴─────────────┘
+                ↓
+         Preventive Action
 ```
-[IoT Sensors / SCADA] ──► [FastAPI Backend] ──► [DGA ML Ensembles / Outage Models]
-                                 │
-                                 ▼
-                     [PostgreSQL Database] ──► [React 18 Glassmorphic Dashboard]
-```
+
+## Core Modules & Features
+
+1. **Company & Region Setup:** Multi-tenant organization scoping, region management, and territory isolation.
+2. **Substation & Transformer Management:** Hierarchical tree of electrical assets, tag IDs, and equipment lifecycle tracking.
+3. **Sensor Data Entry:** Ingestion of continuous telemetry including core temperatures, load levels, vibration, and partial discharge.
+4. **Weather Data Monitoring:** Regional meteorological hazard tracking (wind gusts, rainfall, thunderstorms, and heatwaves).
+5. **Historical Failure Records:** Detailed incident logging (root causes, trip duration, customers affected).
+6. **Asset-wise Risk Prediction:** Individualized reliability calculations ensuring every transformer exhibits its own true rate.
+7. **ML + Threshold-based Analysis:** Trained Gradient Boosting & Random Forest DGA ensembles calibrated with IEEE/CIGRE standards.
+8. **Failure Alerts & Notifications:** Real-time priority classification into Critical vs. Warning states.
+9. **Maintenance Recommendations:** Prescribed preventative engineering work-orders targeting identified stress factors.
+10. **Crew Pre-positioning:** Automated standby field crew staging and storm readiness checklists.
+11. **Grid Monitoring Dashboard:** Real-time glassmorphic control room overview with high-contrast telemetry charts.
+12. **Supabase Database Integration:** PostgreSQL database with secure row-level security and persistent storage.
 
 ## Key Design Decisions
 
 | Decision | Rationale |
 |---|---|
-| Hybrid ML + IEEE/CIGRE Calibrations | Combines data-driven pattern recognition from DGA datasets with deterministic engineering safety limits. |
-| Per-Machine Isolated Calculations | Eliminates shared global metrics so every individual transformer displays its true independent health rate. |
-| Multi-Output Outage Classification | Simultaneously predicts outage probability, fault type (Line Breakage / Transformer Failure / Overheating), and downtime hours. |
-| Reactive Glassmorphic UI | High-contrast visual telemetry built for utility control room operators. |
-
-## IBM Technologies Used
-
-- **IBM Bob:** Utilized as the primary AI developer assistant for rapid model training, pipeline refactoring, and automated validation.
-- **watsonx.ai Architecture Patterns:** Foundation for telemetry reasoning, root-cause explanation synthesis, and preventative maintenance action formulation.
+| Isolated Asset Health Scoring | Prevents shared global variables; each machine calculates its reliability from its own sensor and incident records. |
+| Multi-Modal Risk Integration | Integrates machine telemetry, weather hazards, and incident history into a unified risk metric. |
+| Deterministic Advisory Generation | Provides concrete, actionable engineering steps instead of opaque risk numbers. |
+| Cloud Database Integration | Supabase PostgreSQL backend ensures real-time synchronization and data persistence. |

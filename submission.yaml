@@ -24,24 +24,24 @@ submission:
     Modern electrical distribution grids suffer from catastrophic unpredicted transformer failures and storm-induced outages, causing millions in industrial downtime and grid instability. Utility dispatchers lack unified real-time telemetry analytics and physics-informed ML risk scoring to proactively prevent critical asset breakdowns.
 
   solution_summary: >
-    PRAVAHA is an AI-powered intelligent power-grid monitoring and failure-prediction platform. It combines trained Gradient Boosting and Random Forest Dissolved Gas Analysis (DGA) ML ensembles with multi-output regional outage risk classifiers, automated maintenance dispatch planning, and real-time SCADA telemetry visualization.
+    PRAVAHA combines machine data, weather data, and past failure data to detect risky transformers and substations early. It gives each asset its own risk score and then suggests alerts, maintenance, and crew planning before a failure becomes an outage.
 
   key_features:
-    - "Trained DGA ML ensemble (GradientBoosting & RandomForest) for equipment health index and remaining useful life estimation"
-    - "Multi-output weather & load-induced grid outage risk classifier with downtime estimation"
-    - "Multi-machine asset monitoring with independent IEEE/CIGRE risk scoring and DGA gas concentration breakdown"
-    - "Automated preventative maintenance recommendation and crew dispatch planning"
-    - "Full-stack reactive operational dashboard with real-time sensor streams and historical incident intelligence"
+    - "Company & Region Setup: Multi-tenant organizational scoping and regional grid mapping"
+    - "Substation & Transformer Management: Full hierarchical asset registry and machine configuration"
+    - "Sensor Data Entry & Weather Data Monitoring: Real-time telemetry ingestion and meteorological hazard tracking"
+    - "Historical Failure Records & Asset-wise Risk Prediction: Isolated ML + threshold-based IEEE/CIGRE risk scoring"
+    - "Failure Alerts, Maintenance Recommendations & Crew Pre-positioning: Automated dispatch and preventive actions"
 
   tech_stack:
     languages: ["Python", "JavaScript", "SQL"]
     frameworks: ["FastAPI", "React", "Vite", "Scikit-Learn"]
-    ibm_technologies: ["IBM Bob", "watsonx.ai"]
-    databases: ["PostgreSQL", "Supabase"]
-    other: ["Pandas", "Joblib", "TailwindCSS / Glassmorphic UI", "Docker"]
+    ibm_technologies: ["IBM Bob", "watsonx.ai Architecture"]
+    databases: ["PostgreSQL", "Supabase Database Integration"]
+    other: ["Pandas", "Joblib", "TailwindCSS Tokens", "Docker"]
 
   what_we_are_most_proud_of: >
-    The end-to-end integration of trained Dissolved Gas Analysis (DGA) physicochemical machine learning models with real-time transformer telemetry and multi-machine asset isolation, giving power grid operators explainable risk attribution and automated crew dispatch recommendations.
+    The end-to-end integration of machine data, weather data, and historical failure records into individual asset-wise risk scores with automated maintenance directives and severe storm crew pre-positioning.
 
   known_limitations: >
     Grid simulation feeds currently simulate real-world telemetry streams at configured sample rates; direct hardware RTU / DNP3 protocol bridge is scaffolded for future enterprise hardware rollout.

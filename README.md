@@ -23,17 +23,47 @@ Modern electrical distribution grids suffer from catastrophic unpredicted transf
 
 ## 💡 Solution
 
-PRAVAHA is an AI-powered intelligent power-grid monitoring and failure-prediction platform. It combines trained Gradient Boosting and Random Forest Dissolved Gas Analysis (DGA) ML ensembles with multi-output regional outage risk classifiers, automated maintenance dispatch planning, and real-time SCADA telemetry visualization.
+PRAVAHA combines machine data, weather data, and past failure data to detect risky transformers and substations early. It gives each asset its own risk score and then suggests alerts, maintenance, and crew planning before a failure becomes an outage.
+
+### Architecture Overview
+
+```text
+Machine Data
+     +
+Weather Data
+     +
+Failure History
+     ↓
+  PRAVAHA
+     ↓
+Risk Analysis
+     ↓
+Asset-wise Risk Score
+     ↓
+┌────────┬──────────────┬─────────────┐
+↓        ↓              ↓
+Alert    Maintenance    Crew Planning
+└────────┴──────────────┴─────────────┘
+                ↓
+         Preventive Action
+```
 
 ---
 
 ## ✨ Key Features
 
-- **Trained DGA ML Ensemble:** Gradient Boosting & Random Forest models predicting transformer Health Index (R² = 0.968) and Remaining Useful Life in years.
-- **Multi-Output Outage Risk Predictor:** Random Forest classifier predicting specific fault types (Line Breakage, Transformer Failure, Overheating) and downtime hours.
-- **Individual Asset Reliability Scoring:** Unique, isolated IEEE/CIGRE risk calculations for every machine on the grid.
-- **Explainable Degradation Factors:** Factor attribution (e.g. +25% Critical Thermal Stress, +15% Partial Discharge) for transparent operator decisions.
-- **Automated Preventative Maintenance & Crew Dispatch:** Direct translation of diagnostic risks into field crew work orders.
+- **Company & Region Setup:** Multi-tenant organization scoping and regional grid sector mapping.
+- **Substation & Transformer Management:** Complete hierarchical asset registry and machine configuration.
+- **Sensor Data Entry & Telemetry Stream:** Ingestion of core temperatures, load levels, vibration, and partial discharge.
+- **Weather Data Monitoring:** Real-time tracking of wind speeds, storm conditions, rainfall, and thermal heatwaves.
+- **Historical Failure Records:** Outage intelligence tracking past breakdown counts, root causes, and trip history.
+- **Asset-wise Risk Prediction:** Individualized reliability calculations so every machine exhibits its own genuine score.
+- **ML + Threshold-based Analysis:** Hybrid Gradient Boosting / Random Forest models combined with IEEE/CIGRE standards.
+- **Failure Alerts & Notifications:** Real-time classification of critical vs. moderate warnings with operational actions.
+- **Maintenance Recommendations:** Prescribed engineering work-orders based on physical degradation factors.
+- **Crew Pre-positioning:** Weather-aware field crew staging and emergency logistics checklists.
+- **Grid Monitoring Dashboard:** Modern high-contrast glassmorphic operational console.
+- **Supabase Database Integration:** PostgreSQL database with secure multi-tenant isolation.
 
 ---
 
@@ -44,7 +74,7 @@ PRAVAHA is an AI-powered intelligent power-grid monitoring and failure-predictio
 | **Languages** | Python 3.11+, JavaScript (ES6+), SQL |
 | **Frameworks** | FastAPI, React 18, Vite, Scikit-Learn |
 | **IBM Technologies** | IBM Bob, watsonx.ai Architecture |
-| **Databases** | PostgreSQL, Supabase |
+| **Databases** | PostgreSQL, Supabase Database Integration |
 | **Other** | Pandas, NumPy, Joblib, TailwindCSS Tokens, Docker |
 
 ---
@@ -115,6 +145,6 @@ npm run dev
 
 ## 🏅 What We're Most Proud Of
 
-The end-to-end integration of trained Dissolved Gas Analysis (DGA) physicochemical machine learning models with real-time transformer telemetry and multi-machine asset isolation, giving power grid operators explainable risk attribution and automated crew dispatch recommendations.
+The end-to-end integration of machine data, weather data, and historical failure records into individual asset-wise risk scores with automated maintenance directives and severe storm crew pre-positioning.
 
 ---
