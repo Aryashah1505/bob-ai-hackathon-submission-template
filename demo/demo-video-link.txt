@@ -1,4 +1,4 @@
-https://youtu.be/voltvision-pravaha-demo
+https://youtu.be/WXrx7Rnk4ek?si=Lb7dP1vl5XMeTMMn
 
 # Demo video overview for PRAVAHA - AI Power Grid Outage Prediction & Machine Health Advisory
 # Showing end-to-end dashboard, trained ML DGA models, equipment diagnostics, and outage risk assessments.
