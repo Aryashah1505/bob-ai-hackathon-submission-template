@@ -10,8 +10,8 @@
 |---|---|
 | **Team Name** | VoltVision |
 | **Track** | AI |
-| **Team Lead** | Arya Shah — aryashah1505@gmail.com |
-| **Members** | Arya Shah (aryashah1505@gmail.com) |
+| **Team Lead** | Arya Shah — 25ce107@charusat.edu.in |
+| **Members** | Arya Shah (25ce107@charusat.edu.in), Shakshi Chaudhary (25ce014@charusat.edu.in), Bhavishya Ladani (25ce050@charusat.edu.in), Tanvi Patel (25ce092@charusat.edu.in) |
 
 ---
 

@@ -6,10 +6,16 @@ team:
   track: "AI"
   lead:
     name: "Arya Shah"
-    email: "aryashah1505@gmail.com"
+    email: "25ce107@charusat.edu.in"
   members:
     - name: "Arya Shah"
-      email: "aryashah1505@gmail.com"
+      email: "25ce107@charusat.edu.in"
+    - name: "Shakshi Chaudhary"
+      email: "25ce014@charusat.edu.in"
+    - name: "Bhavishya Ladani"
+      email: "25ce050@charusat.edu.in"
+    - name: "Tanvi Patel"
+      email: "25ce092@charusat.edu.in"
 
 submission:
   title: "PRAVAHA — Power Grid Outage Prediction & Machine Health Advisory"
