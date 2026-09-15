@@ -139,12 +139,35 @@ npm run dev
 
 ## ⚠️ Known Limitations
 
-- Real-time sensor streaming is currently driven by realistic utility simulation cycles at configurable intervals; full hardware DNP3 / Modbus protocol bridge is planned for physical utility pilot testing.
+- **Prototype Data:** The system currently uses entered/stored asset, sensor, weather, and failure data rather than live grid sensors.
+- **Real-World Validation:** The risk model has not yet been validated on large-scale real utility datasets.
+- **IBM Integration:** IBM watsonx.ai is not currently integrated into the submitted prototype.
+- **Production Readiness:** The application is a hackathon prototype and is not yet hardened for large-scale production deployment.
+- **Prediction Accuracy:** Risk scores depend on the quality and completeness of the available asset data.
 
 ---
 
 ## 🏅 What We're Most Proud Of
 
-The end-to-end integration of machine data, weather data, and historical failure records into individual asset-wise risk scores with automated maintenance directives and severe storm crew pre-positioning.
+We are most proud of **PRAVAHA's asset-wise risk intelligence**.
+Instead of giving every machine the same risk value, PRAVAHA analyzes each transformer using its own available data and identifies:
+
+```text
+Machine Data
+     ↓
+Risk Analysis
+     ↓
+Asset-specific Risk Score
+     ↓
+Alert
+     ↓
+Maintenance Action
+     ↓
+Crew Planning
+```
+
+> **Different machine → Different data → Different risk → Different action**  
+> This helps operators focus on the equipment that needs attention first.
 
 ---
+

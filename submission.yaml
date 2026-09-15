@@ -41,10 +41,14 @@ submission:
     other: ["Pandas", "Joblib", "TailwindCSS Tokens", "Docker"]
 
   what_we_are_most_proud_of: >
-    The end-to-end integration of machine data, weather data, and historical failure records into individual asset-wise risk scores with automated maintenance directives and severe storm crew pre-positioning.
+    We are most proud of PRAVAHA's asset-wise risk intelligence. Instead of giving every machine the same risk value, PRAVAHA analyzes each transformer using its own available data and identifies: Machine Data -> Risk Analysis -> Asset-specific Risk Score -> Alert -> Maintenance Action -> Crew Planning. Different machine -> Different data -> Different risk -> Different action. This helps operators focus on the equipment that needs attention first.
 
   known_limitations: >
-    Grid simulation feeds currently simulate real-world telemetry streams at configured sample rates; direct hardware RTU / DNP3 protocol bridge is scaffolded for future enterprise hardware rollout.
+    1. Prototype Data: The system currently uses entered/stored asset, sensor, weather, and failure data rather than live grid sensors.
+    2. Real-World Validation: The risk model has not yet been validated on large-scale real utility datasets.
+    3. IBM Integration: IBM watsonx.ai is not currently integrated into the submitted prototype.
+    4. Production Readiness: The application is a hackathon prototype and is not yet hardened for large-scale production deployment.
+    5. Prediction Accuracy: Risk scores depend on the quality and completeness of the available asset data.
 
 # =============================================================================
 # ARTIFACT LOCATIONS
