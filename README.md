@@ -131,7 +131,7 @@ npm run dev
 | Artifact | Link |
 |---|---|
 | 📹 Demo Video | [See demo/demo-video-link.txt](demo/demo-video-link.txt) |
-| 🌐 Live Demo | [See demo/live-demo-url.txt](demo/live-demo-url.txt) |
+| 🌐 Live Demo | [https://wide-bars-win.loca.lt](https://wide-bars-win.loca.lt) (Password / Endpoint IP: `106.202.119.102`) |
 | 🖼️ Screenshots | [See demo/screenshots/](demo/screenshots/) |
 | 📊 Presentation | [See presentation/](presentation/) |
 

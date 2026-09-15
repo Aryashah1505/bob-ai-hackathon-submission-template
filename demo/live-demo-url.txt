@@ -1,1 +1,4 @@
-NOT DEPLOYED — run locally using docs/setup-guide.md
+https://wide-bars-win.loca.lt
+
+# If prompted for Tunnel Password (Endpoint IP), enter:
+# 106.202.119.102
