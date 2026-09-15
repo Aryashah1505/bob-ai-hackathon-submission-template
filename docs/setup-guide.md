@@ -1,79 +1,81 @@
 # Setup Guide
 
-> **This file is read by the automated evaluation pipeline. Be precise and complete.**
-
 ## Prerequisites
 
-Before you begin, ensure you have the following installed:
+Before running PRAVAHA, ensure you have the following installed:
 
-- [ ] [e.g., Python 3.11+]
-- [ ] [e.g., Node.js 18+]
-- [ ] [e.g., Docker Desktop]
-- [ ] [e.g., An IBM Cloud account with watsonx.ai access]
+- Python 3.10 or higher
+- Node.js 18 or higher (with npm)
+- Git
 
 ## Environment Variables
 
-Copy `.env.example` to `.env` and fill in the values:
+Copy `.env.example` to `.env` in the repository root:
 
 ```bash
 cp .env.example .env
 ```
 
-| Variable | Description | Required |
-|---|---|---|
-| `WATSONX_API_KEY` | Your IBM watsonx.ai API key | Yes |
-| `WATSONX_PROJECT_ID` | Your watsonx.ai project ID | Yes |
-| `DATABASE_URL` | PostgreSQL connection string | Yes |
-| `SLACK_WEBHOOK_URL` | Slack webhook for alerts | No |
+| Variable | Description | Default | Required |
+|---|---|---|---|
+| `PORT` | Backend server port | `8000` | Yes |
+| `SUPABASE_URL` | Supabase / PostgreSQL endpoint URL | `https://your-project.supabase.co` | No (Mock fallback supported) |
+| `SUPABASE_KEY` | Supabase API key | `your-anon-key` | No (Mock fallback supported) |
+| `VITE_API_URL` | Backend URL for frontend | `http://localhost:8000` | Yes |
 
 ## Installation
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/[your-org]/[your-repo].git
-cd [your-repo]
+git clone https://github.com/Aryashah1505/bob-ai-hackathon-submission-template.git
+cd bob-ai-hackathon-submission-template
 
-# 2. Install backend dependencies
-[your command — e.g.: pip install -r requirements.txt]
+# 2. Set up and activate Python virtual environment
+cd src/backend
+python3 -m venv .venv
+source .venv/bin/activate
 
-# 3. Install frontend dependencies (if applicable)
-[your command — e.g.: cd frontend && npm install]
+# 3. Install backend dependencies
+pip install -r requirements.txt
 
-# 4. Set up the database (if applicable)
-[your command — e.g.: python manage.py migrate]
+# 4. Install frontend dependencies
+cd ../frontend
+npm install
 ```
 
 ## Running the Application
 
+### 1. Start the Backend API Server
 ```bash
-# Start the backend
-[your command — e.g.: uvicorn app.main:app --reload]
-
-# Start the frontend (in a separate terminal, if applicable)
-[your command — e.g.: cd frontend && npm run dev]
+cd src/backend
+source .venv/bin/activate
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
+The FastAPI backend will be live at: `http://localhost:8000` (API Docs at `http://localhost:8000/docs`)
 
-The application will be available at: `http://localhost:[PORT]`
-
-## Running Tests
-
+### 2. Start the Frontend Development Server
 ```bash
-[your test command — e.g.: pytest tests/ -v]
+cd src/frontend
+npm run dev
 ```
+The React frontend dashboard will open at: `http://localhost:5173`
 
-## Quick Demo (Optional)
-
-If you have a demo script or sample data to showcase the project quickly:
+## Running Tests & Verifications
 
 ```bash
-[e.g.: python demo/seed_demo_data.py]
-[e.g.: open http://localhost:8000/demo]
+# Verify backend ML model inference
+cd src/backend
+python3 -c "from services.ml_prediction_engine import get_models; print('ML Models Loaded:', get_models() is not None)"
+
+# Test frontend production build
+cd ../frontend
+npm run build
 ```
 
 ## Troubleshooting
 
 | Issue | Solution |
 |---|---|
-| [e.g., `ModuleNotFoundError`] | [e.g., Run `pip install -r requirements.txt` again] |
-| [e.g., Database connection refused] | [e.g., Ensure PostgreSQL is running: `docker compose up db`] |
-| [e.g., watsonx.ai 401 error] | [e.g., Check `WATSONX_API_KEY` in your `.env` file] |
+| `ModuleNotFoundError: No module named 'sklearn'` | Ensure virtualenv is active and run `pip install -r requirements.txt` |
+| `Port 8000 already in use` | Kill previous process: `lsof -ti:8000 | xargs kill -9` or change `PORT=8001` |
+| `Frontend fails to connect to backend` | Verify backend is running on `http://localhost:8000` and check `VITE_API_URL` |

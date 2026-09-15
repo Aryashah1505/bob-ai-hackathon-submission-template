@@ -2,48 +2,38 @@
 
 ## System Architecture
 
-[Describe the overall architecture of your system. Replace the Mermaid diagram below with your actual architecture.]
-
 ```mermaid
 graph TD
-    A[User / Browser] -->|HTTP| B[Frontend - React]
-    B -->|REST API| C[Backend - FastAPI]
-    C -->|SDK| D[watsonx.ai]
-    C -->|Query| E[PostgreSQL]
-    C -->|Publish| F[Slack Webhook]
-    D -->|Inference Result| C
+    A[SCADA Sensors & Weather API] -->|Telemetry Feeds| B[FastAPI Backend Engine]
+    C[Web Browser / Control Room] -->|React 18 UI| B
+    B -->|Feature Extraction| D[DGA ML Regressors - Health & Life Expectancy]
+    B -->|Grid Classifiers| E[Multi-Output Outage & Downtime Models]
+    B -->|Async Queries| F[(PostgreSQL / Supabase Database)]
+    D -->|Risk Scores & RUL| B
+    E -->|Fault Type & Downtime| B
+    B -->|JSON API Responses| C
 ```
 
 ## Components
 
 | Component | Technology | Responsibility |
 |---|---|---|
-| Frontend | [e.g., React 18] | [e.g., Dashboard UI, user interaction] |
-| Backend API | [e.g., FastAPI] | [e.g., Business logic, orchestration] |
-| AI / ML | [e.g., watsonx.ai] | [e.g., Anomaly scoring, classification] |
-| Database | [e.g., PostgreSQL] | [e.g., Storing pipeline events and scores] |
-| Notifications | [e.g., Slack API] | [e.g., Alerting on threshold breaches] |
+| Frontend UI | React 18, Vite, Lucide Icons, Vanilla CSS | Real-time monitoring dashboard, interactive risk assessment forms, telemetry charts, crew planning |
+| Backend API | FastAPI, Python 3.11+, Pydantic | REST API endpoints, CORS handling, data validation, orchestration |
+| ML Inference Engine | Scikit-Learn, Pandas, NumPy, Joblib | DGA Gradient Boosting regressor, Random Forest classifiers, Downtime regressor |
+| Database Layer | PostgreSQL, Supabase | Telemetry storage, asset registries, historical incident logs, crew records |
+| Security & Multi-Tenancy | Row-Level Security (RLS), JWT | Company-isolated data scoping and role-based access control |
 
 ## Data Flow
 
-[Describe how data moves through your system from input to output.]
-
-1. [e.g., Pipeline logs are ingested via a webhook from GitHub Actions]
-2. [e.g., Logs are preprocessed and chunked into 512-token segments]
-3. [e.g., Each chunk is sent to the watsonx.ai inference endpoint]
-4. [e.g., Anomaly scores are stored in PostgreSQL]
-5. [e.g., The React dashboard polls the API every 30 seconds to refresh]
+1. Real-time sensor readings and meteorological feeds are sent to the FastAPI backend.
+2. The `feature_processing` module normalizes telemetry and computes multi-variable feature vectors.
+3. The `ml_prediction_engine` loads serialized `.joblib` pipelines and executes low-latency inference.
+4. The `prediction_service` combines ML outputs with IEEE engineering threshold rules to generate health scores, life expectancy, fault type predictions, and maintenance actions.
+5. The React dashboard updates live telemetry cards, risk badges, and alert notifications.
 
 ## Security Considerations
 
-[Note any security decisions relevant to the architecture — even if basic.]
-
-- [e.g., API keys stored in environment variables, never committed to git]
-- [e.g., All API routes require a Bearer token]
-- [e.g., Database credentials rotated via IBM Secrets Manager]
-
-## Scalability Notes
-
-[Optional: how would this scale beyond the hackathon prototype?]
-
-[e.g., "The FastAPI backend is stateless and could be horizontally scaled behind a load balancer. The watsonx.ai calls are the bottleneck and would benefit from request batching."]
+- Environment variables (`.env`) are strictly separated and git-ignored.
+- Multi-company data isolation enforced at the database level.
+- Input validation on all diagnostic and simulation endpoints via Pydantic schemas.

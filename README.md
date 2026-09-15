@@ -1,6 +1,6 @@
-# 🚀 [Your Project Title Here]
+# ⚡ PRAVAHA — Power Grid Outage Prediction & Machine Health Advisory
 
-> ⚠️ **Replace everything in `[ ]` brackets with your actual content before submission.**
+> Intelligent AI-powered failure prediction, Dissolved Gas Analysis (DGA) machine learning, and weather-induced outage mitigation for electrical utility grids.
 
 ---
 
@@ -8,36 +8,32 @@
 
 | Field | Value |
 |---|---|
-| **Team Name** | [Your Team Name] |
-| **Track** | [AI / DevOps / Sustainability / Open] |
-| **Team Lead** | [Name] — [email@ibm.com] |
-| **Members** | [Name 1], [Name 2], [Name 3] |
+| **Team Name** | VoltVision |
+| **Track** | AI |
+| **Team Lead** | Arya Shah — aryashah1505@gmail.com |
+| **Members** | Arya Shah (aryashah1505@gmail.com) |
 
 ---
 
 ## 🎯 Problem Statement
 
-> In 2–3 sentences: What problem does your project solve? Who experiences this problem?
-
-[Describe the real-world problem your project addresses. Be specific about who the user is and what pain point they face.]
+Modern electrical distribution grids suffer from catastrophic unpredicted transformer failures and storm-induced outages, causing millions in industrial downtime and grid instability. Utility dispatchers lack unified real-time telemetry analytics and physics-informed ML risk scoring to proactively prevent critical asset breakdowns before blackouts occur.
 
 ---
 
 ## 💡 Solution
 
-> In 2–3 sentences: What did you build? How does it solve the problem above?
-
-[Describe your solution clearly. Explain the core mechanism — what makes it work.]
+PRAVAHA is an AI-powered intelligent power-grid monitoring and failure-prediction platform. It combines trained Gradient Boosting and Random Forest Dissolved Gas Analysis (DGA) ML ensembles with multi-output regional outage risk classifiers, automated maintenance dispatch planning, and real-time SCADA telemetry visualization.
 
 ---
 
 ## ✨ Key Features
 
-- **Feature 1:** [Brief description — e.g., "Real-time anomaly detection using watsonx.ai"]
-- **Feature 2:** [Brief description]
-- **Feature 3:** [Brief description]
-- **Feature 4:** [Optional]
-- **Feature 5:** [Optional]
+- **Trained DGA ML Ensemble:** Gradient Boosting & Random Forest models predicting transformer Health Index (R² = 0.968) and Remaining Useful Life in years.
+- **Multi-Output Outage Risk Predictor:** Random Forest classifier predicting specific fault types (Line Breakage, Transformer Failure, Overheating) and downtime hours.
+- **Individual Asset Reliability Scoring:** Unique, isolated IEEE/CIGRE risk calculations for every machine on the grid.
+- **Explainable Degradation Factors:** Factor attribution (e.g. +25% Critical Thermal Stress, +15% Partial Discharge) for transparent operator decisions.
+- **Automated Preventative Maintenance & Crew Dispatch:** Direct translation of diagnostic risks into field crew work orders.
 
 ---
 
@@ -45,26 +41,31 @@
 
 | Category | Technologies |
 |---|---|
-| **Languages** | [e.g., Python, TypeScript] |
-| **Frameworks** | [e.g., FastAPI, React] |
-| **IBM Technologies** | [e.g., watsonx.ai, IBM Bob, IBM Cloud] |
-| **Databases** | [e.g., PostgreSQL, Redis] |
-| **Other** | [e.g., Docker, GitHub Actions] |
+| **Languages** | Python 3.11+, JavaScript (ES6+), SQL |
+| **Frameworks** | FastAPI, React 18, Vite, Scikit-Learn |
+| **IBM Technologies** | IBM Bob, watsonx.ai Architecture |
+| **Databases** | PostgreSQL, Supabase |
+| **Other** | Pandas, NumPy, Joblib, TailwindCSS Tokens, Docker |
 
 ---
 
 ## 📁 Repository Structure
 
 ```
-├── src/                  # All source code
-├── docs/                 # Written documentation
+├── src/                  # All source code (backend + frontend)
+│   ├── backend/          # FastAPI server, ML models (.joblib), services
+│   ├── frontend/         # React 18 dashboard, components, pages
+│   ├── infra/            # Database schema and Docker setup
+│   └── README.md         # Source code organization details
+├── docs/                 # Detailed documentation
 │   ├── problem-statement.md
 │   ├── solution-overview.md
 │   ├── architecture.md
 │   └── setup-guide.md
 ├── demo/                 # Demo artifacts
 │   ├── screenshots/      # App screenshots
-│   └── demo-video-link.txt  # Link to demo video
+│   ├── demo-video-link.txt  # Link to demo video
+│   └── live-demo-url.txt    # Live URL or local instructions
 ├── presentation/         # Slide deck
 └── submission.yaml       # Structured submission metadata
 ```
@@ -73,22 +74,24 @@
 
 ## ⚡ How to Run
 
-> **Copy these exact steps from your [`docs/setup-guide.md`](docs/setup-guide.md)**
+> Copy of steps from [`docs/setup-guide.md`](docs/setup-guide.md):
 
 ```bash
-# 1. Clone the repo
-git clone https://github.com/[your-repo].git
-cd [your-repo]
+# 1. Clone the repository
+git clone https://github.com/Aryashah1505/bob-ai-hackathon-submission-template.git
+cd bob-ai-hackathon-submission-template
 
-# 2. Install dependencies
-[your install command here]
+# 2. Setup & start Backend
+cd src/backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
-# 3. Configure environment
-cp .env.example .env
-# Edit .env with your values
-
-# 4. Run the project
-[your run command here]
+# 3. Setup & start Frontend (in another terminal)
+cd src/frontend
+npm install
+npm run dev
 ```
 
 ---
@@ -100,22 +103,18 @@ cp .env.example .env
 | 📹 Demo Video | [See demo/demo-video-link.txt](demo/demo-video-link.txt) |
 | 🌐 Live Demo | [See demo/live-demo-url.txt](demo/live-demo-url.txt) |
 | 🖼️ Screenshots | [See demo/screenshots/](demo/screenshots/) |
-| 📊 Presentation | [See presentation/slides.pdf](presentation/) |
+| 📊 Presentation | [See presentation/](presentation/) |
 
 ---
 
 ## ⚠️ Known Limitations
 
-> Be honest — judges appreciate transparency over overclaiming.
-
-- [Limitation 1: e.g., "Authentication is mocked — not production-ready"]
-- [Limitation 2: e.g., "Only tested on Chrome"]
-- [Limitation 3: e.g., "Feature X is scaffolded but not fully implemented"]
+- Real-time sensor streaming is currently driven by realistic utility simulation cycles at configurable intervals; full hardware DNP3 / Modbus protocol bridge is planned for physical utility pilot testing.
 
 ---
 
 ## 🏅 What We're Most Proud Of
 
-[Tell the judges what part of your submission is strongest and worth paying close attention to.]
+The end-to-end integration of trained Dissolved Gas Analysis (DGA) physicochemical machine learning models with real-time transformer telemetry and multi-machine asset isolation, giving power grid operators explainable risk attribution and automated crew dispatch recommendations.
 
 ---

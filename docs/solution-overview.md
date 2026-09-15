@@ -1,41 +1,35 @@
 # Solution Overview
 
 ## What We Built
-
-[Describe your solution in plain language. Avoid jargon — write as if explaining to a smart colleague unfamiliar with your tech stack.]
+**PRAVAHA** is an AI-powered intelligent power-grid monitoring and failure-prediction platform. It combines trained Machine Learning ensembles (Gradient Boosting & Random Forest) with IEEE/CIGRE physics-calibrated engineering rules to deliver real-time risk scores, remaining useful life predictions, weather-induced outage forecasting, and automated crew dispatch recommendations.
 
 ## How It Works
 
-[Explain the core mechanism step by step. A numbered list or simple flow works well here.]
+1. **Multi-Source Telemetry Ingestion:** Continuous ingestion of sensor readings (temperatures, load percentage, vibration, partial discharge, dielectric oil quality, voltage fluctuations) and regional meteorological data.
+2. **DGA Physicochemical ML Inference:** Trained Gradient Boosting & Random Forest models evaluate Dissolved Gas Analysis profiles ($H_2$, $CH_4$, $CO$, $CO_2$, $C_2H_4$, Dielectric Rigidity) to predict equipment health index and remaining useful life (years).
+3. **Regional Outage & Downtime Forecasting:** Multi-output classification models correlate wind gusts, storm intensity, grid load ratio, and upstream alert counts to predict specific fault types and expected repair downtime in hours.
+4. **Explainable Risk Attribution:** Every score provides granular contributing factor breakdowns (e.g. "+25% Critical Thermal Stress", "+15% High Partial Discharge").
+5. **Automated Advisory & Dispatch:** Instant generation of preventative maintenance directives and optimized field crew work-order planning.
 
-1. [Step 1: e.g., "User connects their GitHub repository via OAuth"]
-2. [Step 2: e.g., "The system ingests pipeline logs and feeds them to watsonx.ai"]
-3. [Step 3: e.g., "An anomaly score is computed and displayed on the dashboard"]
-4. [Step 4: e.g., "Alerts are sent to Slack when the score exceeds a threshold"]
-
-## Architecture Diagram
-
-> See [`architecture.md`](architecture.md) for the detailed diagram.
-
-[Optionally include a simple ASCII or Mermaid diagram here for quick reference.]
+## Architecture Flow
 
 ```
-[User] → [Frontend: React] → [API: FastAPI] → [watsonx.ai] → [Dashboard]
-                                    ↓
-                             [PostgreSQL DB]
+[IoT Sensors / SCADA] ──► [FastAPI Backend] ──► [DGA ML Ensembles / Outage Models]
+                                 │
+                                 ▼
+                     [PostgreSQL Database] ──► [React 18 Glassmorphic Dashboard]
 ```
 
 ## Key Design Decisions
 
 | Decision | Rationale |
 |---|---|
-| [e.g., Used watsonx.ai for anomaly detection] | [e.g., Pre-trained models reduced time-to-value vs. building from scratch] |
-| [Decision 2] | [Rationale 2] |
-| [Decision 3] | [Rationale 3] |
+| Hybrid ML + IEEE/CIGRE Calibrations | Combines data-driven pattern recognition from DGA datasets with deterministic engineering safety limits. |
+| Per-Machine Isolated Calculations | Eliminates shared global metrics so every individual transformer displays its true independent health rate. |
+| Multi-Output Outage Classification | Simultaneously predicts outage probability, fault type (Line Breakage / Transformer Failure / Overheating), and downtime hours. |
+| Reactive Glassmorphic UI | High-contrast visual telemetry built for utility control room operators. |
 
 ## IBM Technologies Used
 
-[Explain specifically HOW you used each IBM technology — not just that you used it.]
-
-- **[IBM Tech 1, e.g., watsonx.ai]:** [How it was used — e.g., "Used the `ibm/granite-13b-instruct-v2` model via the Python SDK to classify anomaly types from log text."]
-- **[IBM Tech 2]:** [How it was used]
+- **IBM Bob:** Utilized as the primary AI developer assistant for rapid model training, pipeline refactoring, and automated validation.
+- **watsonx.ai Architecture Patterns:** Foundation for telemetry reasoning, root-cause explanation synthesis, and preventative maintenance action formulation.

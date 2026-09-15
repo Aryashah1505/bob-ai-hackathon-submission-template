@@ -1,47 +1,37 @@
-# Source Code
+# PRAVAHA Source Code Directory
 
-Place all your project's source code in this folder.
+This directory contains the full application source code for **PRAVAHA — Power Grid Outage Prediction & Machine Health Advisory**.
 
-## Structure Guidelines
+## Directory Layout
 
-Organize your code logically. Here are common patterns — use whatever fits
-your project:
-
-### Web Application
 ```
 src/
-  backend/        ← API server code
-  frontend/       ← UI code
-  shared/         ← Shared utilities/types
+├── backend/                  # FastAPI Application & AI/ML Inference Services
+│   ├── main.py               # REST API endpoints & CORS middleware
+│   ├── models.py             # Pydantic schemas & data models
+│   ├── database.py           # Supabase / PostgreSQL database engine
+│   ├── auth.py               # Authentication & session verification
+│   ├── requirements.txt      # Python dependencies (scikit-learn, fastapi, pandas, etc.)
+│   └── services/             # Core ML and Business Logic
+│       ├── ml_prediction_engine.py  # Model loader & DGA/Outage inference
+│       ├── ml_models/               # Serialized .joblib trained models
+│       ├── prediction_service.py    # Hybrid ML + IEEE engineering calculators
+│       ├── feature_processing.py    # Telemetry normalization & feature vectors
+│       ├── recommendation_service.py # Preventative maintenance advisory
+│       └── company_search.py        # Industry isolation & search
+│
+├── frontend/                 # React 18 + Vite Web Application
+│   ├── src/
+│   │   ├── App.jsx           # Main router & application shell
+│   │   ├── api/              # API clients (FastAPI + Supabase)
+│   │   ├── components/       # UI Components (Sidebar, TopBar, RiskBadge, SummaryCard)
+│   │   ├── context/          # Multi-tenant Auth Context
+│   │   ├── pages/            # Views (Dashboard, Prediction, Assets, Alerts, Maintenance, Crew)
+│   │   └── styles/           # Modern Glassmorphic Cyber-Grid Design System
+│   ├── package.json          # Node dependencies
+│   └── vite.config.js        # Vite build configuration
+│
+└── infra/                    # Deployment & Database Migrations
+    ├── docker-compose.yml    # Multi-container orchestration
+    └── schema.sql            # PostgreSQL schema & historical incident tables
 ```
-
-### Data / AI Project
-```
-src/
-  data/           ← Data ingestion / preprocessing
-  models/         ← ML model code
-  api/            ← Serving layer
-  notebooks/      ← Jupyter notebooks (exploration)
-```
-
-### CLI / Script-based Tool
-```
-src/
-  cli/            ← CLI entry points
-  lib/            ← Core logic
-  utils/          ← Helpers
-```
-
-## Important Files to Include
-
-- `requirements.txt` or `package.json` — dependency manifest
-- `.env.example` — template for environment variables (NEVER commit `.env`)
-- Any database migration files
-- Configuration files
-
-## What NOT to Include in src/
-
-- `.env` files with real secrets
-- Large binary files (use Git LFS or link externally)
-- `node_modules/` or `venv/` (these are in `.gitignore`)
-- Build artifacts (`dist/`, `build/`, `__pycache__/`)

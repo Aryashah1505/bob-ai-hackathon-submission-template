@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # Supabase / Local PostgreSQL DB Service (Placeholder for local testing)
+  db:
+    image: postgres:15-alpine
+    container_name: grid_advisor_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # FastAPI Backend Service
+  api:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: grid_advisor_backend
+    restart: always
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://postgres:postgrespassword@db:5432/postgres
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  # React (Vite) Frontend Service
+  web:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: grid_advisor_frontend
+    restart: always
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:
